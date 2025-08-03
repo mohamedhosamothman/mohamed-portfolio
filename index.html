@@ -2375,7 +2375,7 @@
   </div>
 </section>
 
-<!-- Contact Card Styling (Light/Dark Compatible) -->
+<!-- Contact Section Styling -->
 <style>
   :root {
     --bg-color: #ffffff;
@@ -2401,65 +2401,59 @@
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
     margin-top: 2rem;
   }
 
-  .contact-card {
+  .project-card {
     background-color: var(--card-bg);
-    padding: 1rem 1rem;
-    border-radius: 0.8rem;
+    padding: 1.2rem;
+    border-radius: 1.2rem;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition: transform 0.3s ease, background-color 0.3s ease;
     text-decoration: none;
-    color: inherit;
   }
 
-  .contact-card:hover {
+  .project-card:hover {
     transform: translateY(-5px);
     background-color: var(--card-hover);
-  }
-
-  .contact-card .project-header,
-  .contact-card .project-body {
-    color: var(--text-color);
   }
 
   .project-header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    color: var(--text-color);
   }
 
   .project-icon i {
+    font-size: 2rem;
     color: var(--icon-color);
-    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .project-title {
-    font-size: 1.05rem;
-    font-weight: 600;
     margin: 0;
+    font-size: 1.2rem;
   }
 
   .project-body {
     text-align: center;
-    font-size: 0.9rem;
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
+    color: var(--text-color);
   }
 
   .project-description {
+    font-size: 0.95rem;
     word-break: break-word;
-    color: var(--text-color);
-    font-size: 0.85rem;
-    line-height: 1.4;
   }
 </style>
 
-
-
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -3036,6 +3030,7 @@
 </body>
 
 </html>
+
 
 
 
