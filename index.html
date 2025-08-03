@@ -2315,57 +2315,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ==== Base Styles ==== */
     :root {
       --bg-color: #ffffff;
-      --text-color: #222;
-      --card-bg: #f9f9f9;
-      --card-hover: #eef3f8;
-      --icon-color: #0077b5;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --text-color: #1f1f1f;
+      --card-bg: #f5f7fa;
+      --card-hover: #e6ebf1;
+      --icon-color: #2563eb;
+      --link-color: #2563eb;
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg-color: #121212;
-        --text-color: #e4e4e4;
-        --card-bg: #1e1e1e;
-        --card-hover: #2a2a2a;
-        --icon-color: #4dabf7;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        --bg-color: #0f172a;
+        --text-color: #f1f5f9;
+        --card-bg: #1e293b;
+        --card-hover: #334155;
+        --icon-color: #60a5fa;
+        --link-color: #60a5fa;
+        --shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
       }
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .contact {
-      padding: 4rem 2rem;
+      padding: 4rem 1.5rem;
       text-align: center;
     }
 
     .section-title {
       font-size: 2.5rem;
-      margin-bottom: 2.5rem;
       font-weight: 700;
+      margin-bottom: 2.5rem;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .contact-link {
       text-decoration: none;
       color: inherit;
+      transition: transform 0.3s;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-6px);
     }
 
     .contact-card {
@@ -2373,50 +2381,56 @@
       padding: 1.8rem 1.5rem;
       border-radius: 1rem;
       box-shadow: var(--shadow);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
       height: 100%;
     }
 
     .contact-card:hover {
-      transform: translateY(-6px);
       background-color: var(--card-hover);
     }
 
     .contact-card i {
       font-size: 2rem;
       color: var(--icon-color);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
 
     .contact-card span {
       display: block;
       font-size: 1.1rem;
       font-weight: 600;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
     }
 
     .contact-card p {
       font-size: 0.95rem;
       margin: 0;
-      word-break: break-word;
       color: var(--text-color);
+      word-break: break-word;
+    }
+
+    .contact-card p a {
+      color: var(--link-color);
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-card p a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <!-- Contact Section -->
   <section class="contact" id="contact">
     <h2 class="section-title">Contact</h2>
 
     <div class="contact-grid">
-
       <a class="contact-link" href="mailto:mohamedhosamothman@gmail.com" target="_blank">
         <div class="contact-card">
           <i class="fas fa-envelope"></i>
           <span>Email</span>
-          <p>mohamedhosamothman@gmail.com</p>
+          <p><a href="mailto:mohamedhosamothman@gmail.com">mohamedhosamothman@gmail.com</a></p>
         </div>
       </a>
 
@@ -2424,7 +2438,7 @@
         <div class="contact-card">
           <i class="fab fa-linkedin"></i>
           <span>LinkedIn</span>
-          <p>mohamed-hosam-analyst</p>
+          <p><a href="https://www.linkedin.com/in/mohamed-hosam-analyst/">mohamed-hosam-analyst</a></p>
         </div>
       </a>
 
@@ -2432,7 +2446,7 @@
         <div class="contact-card">
           <i class="fas fa-phone"></i>
           <span>Phone</span>
-          <p>+20 1024984060</p>
+          <p><a href="tel:+201024984060">+20 1024984060</a></p>
         </div>
       </a>
 
@@ -2440,10 +2454,9 @@
         <div class="contact-card">
           <i class="fab fa-github"></i>
           <span>GitHub</span>
-          <p>mohamedhosamothman</p>
+          <p><a href="https://github.com/mohamedhosamothman">mohamedhosamothman</a></p>
         </div>
       </a>
-
     </div>
   </section>
 
@@ -3028,6 +3041,7 @@
 </body>
 
 </html>
+
 
 
 
