@@ -2328,16 +2328,27 @@
     }
 
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-color: #0f172a;
-        --text-color: #f1f5f9;
-        --card-bg: #1e293b;
-        --card-hover: #334155;
-        --icon-color: #60a5fa;
-        --link-color: #60a5fa;
-        --shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-      }
-    }
+  :root {
+    --bg-color: #0f172a;
+    --text-color: #f1f5f9;
+    --card-bg: #1e293b;
+    --card-hover: #334155;
+    --icon-color: #60a5fa;
+    --link-color: #60a5fa;
+    --shadow: 0 4px 12px rgba(255, 255, 255, 0.08); /* أكثر وضوحًا للدارك */
+  }
+
+  .contact-card {
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+  }
+
+  .contact-card:hover {
+    background-color: var(--card-hover);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15); /* هوفر ظل ناعم أبيض */
+  }
+}
+
 
     body {
       margin: 0;
@@ -3041,6 +3052,7 @@
 </body>
 
 </html>
+
 
 
 
