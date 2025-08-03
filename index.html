@@ -2308,7 +2308,117 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .contact-btn {
+            margin-top: 15px;
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-social {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .contact-social h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            font-size: 1.5rem;
+            color: #444;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Contact Section -->
 <section class="section contact" id="contact">
     <div class="container">
         <h2 class="section-title fade-in-up">
@@ -2357,6 +2467,15 @@
                 <div class="contact-btn">View Profile</div>
             </a>
 
+            <a class="contact-card fade-in-up" href="tel:+201024984060">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Phone</h3>
+                <p>+20 102 498 4060</p>
+                <div class="contact-btn">Call Now</div>
+            </a>
+
         </div>
 
         <!-- Social Media Icons -->
@@ -2388,6 +2507,9 @@
         </div>
     </div>
 </section>
+
+</body>
+</html>
 
 
     <!-- Footer -->
@@ -2966,6 +3088,7 @@
 </body>
 
 </html>
+
 
 
 
