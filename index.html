@@ -2309,210 +2309,116 @@
     </section>
 
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Section</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   <style>
-    :root {
-      --bg-light: #f9f9f9;
-      --text-light: #333;
-      --card-light: #fff;
-      --icon-color-light: #007bff;
-
-      --bg-dark: #1a1a1a;
-      --text-dark: #ddd;
-      --card-dark: #2a2a2a;
-      --icon-color-dark: #4dabf7;
-    }
-
-    [data-theme='dark'] {
-      --bg: var(--bg-dark);
-      --text: var(--text-dark);
-      --card: var(--card-dark);
-      --icon-color: var(--icon-color-dark);
-    }
-
-    [data-theme='light'] {
-      --bg: var(--bg-light);
-      --text: var(--text-light);
-      --card: var(--card-light);
-      --icon-color: var(--icon-color-light);
-    }
-
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
     }
 
-    .section {
-      padding: 60px 20px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
+    .contact {
+      padding: 4rem 2rem;
+      text-align: center;
+      background-color: #ffffff;
     }
 
     .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 1rem;
-      opacity: 0.8;
-      margin-bottom: 40px;
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+      color: #222;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .contact-card {
-      background-color: var(--card);
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      padding: 24px 18px;
-      text-align: center;
-      transition: 0.3s;
-      color: var(--text);
-      text-decoration: none;
+      background-color: #f9f9f9;
+      padding: 1.8rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
     }
 
     .contact-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transform: translateY(-6px);
     }
 
-    .contact-icon {
-      font-size: 2.2rem;
-      color: var(--icon-color);
-      margin-bottom: 12px;
+    .contact-card i {
+      font-size: 2rem;
+      color: #0077b5;
+      margin-bottom: 0.6rem;
     }
 
-    .contact-btn {
-      margin-top: 12px;
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: var(--icon-color);
-      color: #fff;
-      border-radius: 8px;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      transition: 0.3s;
+    .contact-card span {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 0.3rem;
     }
 
-    .contact-btn:hover {
-      background-color: #0056b3;
+    .contact-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin: 0;
+      word-break: break-word;
     }
 
-    .contact-social {
-      text-align: center;
-      margin-top: 60px;
+    .contact-card a {
+      color: #0077b5;
+      text-decoration: none;
     }
 
-    .contact-social h3 {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .social-link {
-      font-size: 1.5rem;
-      color: var(--icon-color);
-      transition: transform 0.2s;
-    }
-
-    .social-link:hover {
-      transform: scale(1.2);
+    .contact-card a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-<!-- Contact Section -->
-<section class="section contact" id="contact">
-  <div class="container">
-    <h2 class="section-title"><i class="fas fa-envelope"></i> Let's Connect</h2>
-    <p class="section-subtitle">Ready to transform your data into actionable insights? Let's discuss your next project.</p>
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">Contact</h2>
 
     <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <span>Email</span>
+        <p>mohamedhosamothman@gmail.com</p>
+      </div>
 
-      <a class="contact-card" href="mailto:mohamedhosamothman@gmail.com">
-        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-        <h3>Email</h3>
-        <p>mohamedhosamothman<br>@gmail.com</p>
-        <div class="contact-btn">Send Email</div>
-      </a>
+      <div class="contact-card">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+        <p><a href="https://www.linkedin.com/in/mohamed-hosam-analyst/" target="_blank">mohamed-hosam-analyst</a></p>
+      </div>
 
-      <a class="contact-card" href="https://www.linkedin.com/in/mohamed-hosam-analyst" target="_blank">
-        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
-        <h3>LinkedIn</h3>
-        <p>Connect with me professionally</p>
-        <div class="contact-btn">Connect</div>
-      </a>
+      <div class="contact-card">
+        <i class="fas fa-phone"></i>
+        <span>Phone</span>
+        <p>+20 1024984060</p>
+      </div>
 
-      <a class="contact-card" href="https://github.com/mohamedhosamothman" target="_blank">
-        <div class="contact-icon"><i class="fab fa-github"></i></div>
-        <h3>GitHub</h3>
-        <p>Explore my projects and code</p>
-        <div class="contact-btn">Follow</div>
-      </a>
-
-      <a class="contact-card" href="https://www.kaggle.com/mohamedhosamothman" target="_blank">
-        <div class="contact-icon"><i class="fab fa-kaggle"></i></div>
-        <h3>Kaggle</h3>
-        <p>Data science competitions</p>
-        <div class="contact-btn">View Profile</div>
-      </a>
-
-      <a class="contact-card" href="tel:+201024984060">
-        <div class="contact-icon"><i class="fas fa-phone"></i></div>
-        <h3>Phone</h3>
-        <p>+20 102 498 4060</p>
-        <div class="contact-btn">Call Now</div>
-      </a>
-
-    </div>
-
-    <div class="contact-social">
-      <h3>Find me on social media</h3>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/mohamed-hosam-analyst" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/mohamedhosamothman" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.kaggle.com/mohamedhosamothman" class="social-link" target="_blank"><i class="fab fa-kaggle"></i></a>
-        <a href="mailto:mohamedhosamothman@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+201024984060" class="social-link"><i class="fas fa-phone"></i></a>
+      <div class="contact-card">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+        <p><a href="https://github.com/mohamedhosamothman" target="_blank">mohamedhosamothman</a></p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Optional: Theme toggle for demo -->
-<script>
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'd') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else if (e.key === 'l') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  });
-</script>
+  </section>
 
 </body>
 </html>
@@ -3095,6 +3001,7 @@
 </body>
 
 </html>
+
 
 
 
