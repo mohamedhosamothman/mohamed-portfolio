@@ -2316,24 +2316,43 @@
   <title>Contact Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   <style>
+    /* ==== Base Styles ==== */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #222;
+      --card-bg: #f9f9f9;
+      --card-hover: #eef3f8;
+      --icon-color: #0077b5;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #121212;
+        --text-color: #e4e4e4;
+        --card-bg: #1e1e1e;
+        --card-hover: #2a2a2a;
+        --icon-color: #4dabf7;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
     }
 
     .contact {
       padding: 4rem 2rem;
       text-align: center;
-      background-color: #ffffff;
     }
 
     .section-title {
       font-size: 2.5rem;
       margin-bottom: 2.5rem;
       font-weight: 700;
-      color: #222;
     }
 
     .contact-grid {
@@ -2344,21 +2363,29 @@
       margin: 0 auto;
     }
 
+    .contact-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .contact-card {
-      background-color: #f9f9f9;
+      background-color: var(--card-bg);
       padding: 1.8rem 1.5rem;
       border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+      height: 100%;
     }
 
     .contact-card:hover {
       transform: translateY(-6px);
+      background-color: var(--card-hover);
     }
 
     .contact-card i {
       font-size: 2rem;
-      color: #0077b5;
+      color: var(--icon-color);
       margin-bottom: 0.6rem;
     }
 
@@ -2366,24 +2393,14 @@
       display: block;
       font-size: 1.1rem;
       font-weight: 600;
-      color: #222;
       margin-bottom: 0.3rem;
     }
 
     .contact-card p {
       font-size: 0.95rem;
-      color: #555;
       margin: 0;
       word-break: break-word;
-    }
-
-    .contact-card a {
-      color: #0077b5;
-      text-decoration: none;
-    }
-
-    .contact-card a:hover {
-      text-decoration: underline;
+      color: var(--text-color);
     }
   </style>
 </head>
@@ -2394,29 +2411,39 @@
     <h2 class="section-title">Contact</h2>
 
     <div class="contact-grid">
-      <div class="contact-card">
-        <i class="fas fa-envelope"></i>
-        <span>Email</span>
-        <p>mohamedhosamothman@gmail.com</p>
-      </div>
 
-      <div class="contact-card">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-        <p><a href="https://www.linkedin.com/in/mohamed-hosam-analyst/" target="_blank">mohamed-hosam-analyst</a></p>
-      </div>
+      <a class="contact-link" href="mailto:mohamedhosamothman@gmail.com" target="_blank">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span>
+          <p>mohamedhosamothman@gmail.com</p>
+        </div>
+      </a>
 
-      <div class="contact-card">
-        <i class="fas fa-phone"></i>
-        <span>Phone</span>
-        <p>+20 1024984060</p>
-      </div>
+      <a class="contact-link" href="https://www.linkedin.com/in/mohamed-hosam-analyst/" target="_blank">
+        <div class="contact-card">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+          <p>mohamed-hosam-analyst</p>
+        </div>
+      </a>
 
-      <div class="contact-card">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-        <p><a href="https://github.com/mohamedhosamothman" target="_blank">mohamedhosamothman</a></p>
-      </div>
+      <a class="contact-link" href="tel:+201024984060">
+        <div class="contact-card">
+          <i class="fas fa-phone"></i>
+          <span>Phone</span>
+          <p>+20 1024984060</p>
+        </div>
+      </a>
+
+      <a class="contact-link" href="https://github.com/mohamedhosamothman" target="_blank">
+        <div class="contact-card">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+          <p>mohamedhosamothman</p>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -3001,6 +3028,7 @@
 </body>
 
 </html>
+
 
 
 
