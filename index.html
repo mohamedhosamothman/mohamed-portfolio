@@ -2308,171 +2308,124 @@
         </div>
     </section>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Section</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #1f1f1f;
-      --card-bg: #f5f7fa;
-      --card-hover: #e6ebf1;
-      --icon-color: #2563eb;
-      --link-color: #2563eb;
-      --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
+<!-- Contact Section -->
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <h2 class="section-title fade-in-up">
+      <i class="fas fa-envelope-open-text"></i>
+      Contact
+    </h2>
+    <p class="section-subtitle fade-in-up">
+      Let’s connect! Feel free to reach out through any of the platforms below.
+    </p>
 
-    @media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #0f172a;
-    --text-color: #f1f5f9;
-    --card-bg: #1e293b;
-    --card-hover: #334155;
-    --icon-color: #60a5fa;
-    --link-color: #60a5fa;
-    --shadow: 0 4px 12px rgba(255, 255, 255, 0.08); /* أكثر وضوحًا للدارك */
-  }
-
-  .contact-card {
-    background-color: var(--card-bg);
-    box-shadow: var(--shadow);
-  }
-
-  .contact-card:hover {
-    background-color: var(--card-hover);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15); /* هوفر ظل ناعم أبيض */
-  }
-}
-
-
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .contact {
-      padding: 4rem 1.5rem;
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 2.5rem;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .contact-link {
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.3s;
-    }
-
-    .contact-link:hover {
-      transform: translateY(-6px);
-    }
-
-    .contact-card {
-      background-color: var(--card-bg);
-      padding: 1.8rem 1.5rem;
-      border-radius: 1rem;
-      box-shadow: var(--shadow);
-      transition: background-color 0.3s, box-shadow 0.3s;
-      height: 100%;
-    }
-
-    .contact-card:hover {
-      background-color: var(--card-hover);
-    }
-
-    .contact-card i {
-      font-size: 2rem;
-      color: var(--icon-color);
-      margin-bottom: 0.8rem;
-    }
-
-    .contact-card span {
-      display: block;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .contact-card p {
-      font-size: 0.95rem;
-      margin: 0;
-      color: var(--text-color);
-      word-break: break-word;
-    }
-
-    .contact-card p a {
-      color: var(--link-color);
-      text-decoration: none;
-      word-break: break-word;
-    }
-
-    .contact-card p a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-
-  <section class="contact" id="contact">
-    <h2 class="section-title">Contact</h2>
-
-    <div class="contact-grid">
-      <a class="contact-link" href="mailto:mohamedhosamothman@gmail.com" target="_blank">
-        <div class="contact-card">
-          <i class="fas fa-envelope"></i>
-          <span>Email</span>
-          <p><a href="mailto:mohamedhosamothman@gmail.com">mohamedhosamothman@gmail.com</a></p>
+    <div class="projects-grid">
+      <!-- Email -->
+      <a href="mailto:mohamedhosamothman@gmail.com" class="project-card fade-in-up contact-card" target="_blank">
+        <div class="project-header">
+          <div class="project-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3 class="project-title">Email</h3>
+        </div>
+        <div class="project-body">
+          <p class="project-description">mohamedhosamothman@gmail.com</p>
         </div>
       </a>
 
-      <a class="contact-link" href="https://www.linkedin.com/in/mohamed-hosam-analyst/" target="_blank">
-        <div class="contact-card">
-          <i class="fab fa-linkedin"></i>
-          <span>LinkedIn</span>
-          <p><a href="https://www.linkedin.com/in/mohamed-hosam-analyst/">mohamed-hosam-analyst</a></p>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/mohamed-hosam-analyst/" class="project-card fade-in-up contact-card" target="_blank">
+        <div class="project-header">
+          <div class="project-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <h3 class="project-title">LinkedIn</h3>
+        </div>
+        <div class="project-body">
+          <p class="project-description">mohamed-hosam-analyst</p>
         </div>
       </a>
 
-      <a class="contact-link" href="tel:+201024984060">
-        <div class="contact-card">
-          <i class="fas fa-phone"></i>
-          <span>Phone</span>
-          <p><a href="tel:+201024984060">+20 1024984060</a></p>
+      <!-- Phone -->
+      <a href="tel:+201024984060" class="project-card fade-in-up contact-card">
+        <div class="project-header">
+          <div class="project-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3 class="project-title">Phone</h3>
+        </div>
+        <div class="project-body">
+          <p class="project-description">+20 1024984060</p>
         </div>
       </a>
 
-      <a class="contact-link" href="https://github.com/mohamedhosamothman" target="_blank">
-        <div class="contact-card">
-          <i class="fab fa-github"></i>
-          <span>GitHub</span>
-          <p><a href="https://github.com/mohamedhosamothman">mohamedhosamothman</a></p>
+      <!-- GitHub -->
+      <a href="https://github.com/mohamedhosamothman" class="project-card fade-in-up contact-card" target="_blank">
+        <div class="project-header">
+          <div class="project-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <h3 class="project-title">GitHub</h3>
+        </div>
+        <div class="project-body">
+          <p class="project-description">mohamedhosamothman</p>
         </div>
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
-</body>
-</html>
+<!-- Contact Card Styling (Light/Dark Compatible) -->
+<style>
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #1f1f1f;
+    --card-bg: #f5f7fa;
+    --card-hover: #e6ebf1;
+    --icon-color: #2563eb;
+    --link-color: #2563eb;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #0f172a;
+      --text-color: #f1f5f9;
+      --card-bg: #1e293b;
+      --card-hover: #334155;
+      --icon-color: #60a5fa;
+      --link-color: #60a5fa;
+      --shadow: 0 6px 20px rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .contact-card {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-hover);
+  }
+
+  .contact-card .project-header,
+  .contact-card .project-body {
+    color: var(--text-color);
+  }
+
+  .project-icon i {
+    color: var(--icon-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .project-description {
+    word-break: break-word;
+  }
+</style>
+
 
 
 
@@ -3052,6 +3005,7 @@
 </body>
 
 </html>
+
 
 
 
