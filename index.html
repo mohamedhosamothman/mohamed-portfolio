@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Loading Screen -->
@@ -42,7 +42,7 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -62,7 +62,7 @@
         </div>
         <div class="hero-content">
             <div class="hero-image-container">
-                <img src="images/profile.jpg" 
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80" 
                      alt="Mohamed Hosam Othman - Data Analyst" 
                      class="hero-image"
                      loading="eager">
@@ -72,7 +72,7 @@
                 Hi, I'm <span class="gradient-text">Mohamed Hosam Othman</span>
             </h1>
             <div class="hero-subtitle">
-                <span class="typewriter" id="typewriter">Data Analyst, BI Developer</span>
+                <span class="typewriter" id="typewriter">Data Analyst & BI Developer</span>
             </div>
             <p class="hero-description">
                 Transforming complex data into meaningful insights that drive smarter decisions and impactful business strategies.
@@ -154,9 +154,9 @@
                             <span>Data Visualization</span>
                         </div>
                     </div>
-                    <a href="#contact" class="btn btn-primary">
+                    <a href="mailto:mohamedhosamothman@gmail.com" class="btn btn-primary">
                         <i class="fas fa-download"></i>
-                        Download CV
+                        Contact Me
                     </a>
                 </div>
             </div>
@@ -258,26 +258,7 @@
             </p>
             
             <div class="certificates-grid">
-                <!-- DataCamp Certificates First -->
                 <div class="certificate-card" data-aos="zoom-in">
-                    <div class="certificate-badge">DataCamp</div>
-                    <div class="certificate-image">
-                        <img src="images/certificates/datacamp.png" 
-                             alt="DataCamp Data Analyst Certificate" 
-                             loading="lazy">
-                    </div>
-                    <div class="certificate-content">
-                        <h3 class="certificate-title">Data Analyst Track</h3>
-                        <p class="certificate-issuer">DataCamp</p>
-                        <p class="certificate-description">Comprehensive data analysis training covering Python, SQL, and statistics.</p>
-                        <a href="https://www.datacamp.com/certificate/DA0012345" class="certificate-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            View Certificate
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="certificate-badge">DEPI</div>
                     <div class="certificate-image">
                         <img src="https://raw.githubusercontent.com/mohamedhosamothman/portfolio/main/Certificate%20DEPI%20English_1.png" 
@@ -295,7 +276,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="certificate-badge">Microsoft</div>
                     <div class="certificate-image">
                         <img src="https://raw.githubusercontent.com/mohamedhosamothman/portfolio/main/Microsoft%20Machin%20Learning%20CERTIFICATE.jpeg" 
@@ -313,7 +294,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="200">
                     <div class="certificate-badge">Power BI</div>
                     <div class="certificate-image">
                         <img src="https://raw.githubusercontent.com/mohamedhosamothman/portfolio/main/Introduction%20to%20Power%20BI%20certificate_1.png" 
@@ -331,7 +312,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="300">
                     <div class="certificate-badge">DAX</div>
                     <div class="certificate-image">
                         <img src="https://raw.githubusercontent.com/mohamedhosamothman/portfolio/main/Introduction%20to%20DAX%20in%20Power%20BI_1.png" 
@@ -349,7 +330,7 @@
                     </div>
                 </div>
 
-                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="500">
+                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="400">
                     <div class="certificate-badge">SQL</div>
                     <div class="certificate-image">
                         <img src="https://raw.githubusercontent.com/mohamedhosamothman/portfolio/main/Intermediate%20SQL_1.png" 
@@ -361,6 +342,24 @@
                         <p class="certificate-issuer">SQL Server Certification</p>
                         <p class="certificate-description">Advanced SQL techniques including joins, subqueries, and optimization.</p>
                         <a href="https://raw.githubusercontent.com/mohamedhosamothman/portfolio/main/Intermediate%20SQL_1.png" class="certificate-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+                <div class="certificate-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="certificate-badge">DataCamp</div>
+                    <div class="certificate-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="DataCamp Data Analyst Certificate" 
+                             loading="lazy">
+                    </div>
+                    <div class="certificate-content">
+                        <h3 class="certificate-title">Data Analyst Track</h3>
+                        <p class="certificate-issuer">DataCamp</p>
+                        <p class="certificate-description">Comprehensive data analysis training covering Python, SQL, and statistics.</p>
+                        <a href="#" class="certificate-link" target="_blank">
                             <i class="fas fa-external-link-alt"></i>
                             View Certificate
                         </a>
@@ -395,28 +394,12 @@
                             <span class="tech-tag analytics">Analytics</span>
                         </div>
                     </div>
-                    <div class="project-carousel">
-                        <div class="carousel-container">
-                            <img src="images/projects/powerbi-dashboard/dashboard1.png" 
-                                 alt="HR Dashboard Overview" 
-                                 class="carousel-image active"
-                                 loading="lazy">
-                            <img src="images/projects/powerbi-dashboard/dashboard2.png" 
-                                 alt="HR Analytics Details" 
-                                 class="carousel-image"
-                                 loading="lazy">
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="carousel-btn prev" data-carousel="hr-dashboard">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="carousel-btn next" data-carousel="hr-dashboard">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <div class="carousel-indicators">
-                            <span class="indicator active" data-slide="0"></span>
-                            <span class="indicator" data-slide="1"></span>
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="HR Dashboard Overview" 
+                             loading="lazy">
+                        <div class="project-overlay">
+                            <i class="fas fa-chart-bar"></i>
                         </div>
                     </div>
                     <div class="project-body">
@@ -464,33 +447,12 @@
                             <span class="tech-tag bi">Business Intelligence</span>
                         </div>
                     </div>
-                    <div class="project-carousel">
-                        <div class="carousel-container">
-                            <img src="images/projects/sql-sales/query1.png" 
-                                 alt="SQL Query Analysis 1" 
-                                 class="carousel-image active"
-                                 loading="lazy">
-                            <img src="images/projects/sql-sales/query2.png" 
-                                 alt="SQL Query Analysis 2" 
-                                 class="carousel-image"
-                                 loading="lazy">
-                            <img src="images/projects/sql-sales/query3.png" 
-                                 alt="SQL Query Analysis 3" 
-                                 class="carousel-image"
-                                 loading="lazy">
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="carousel-btn prev" data-carousel="pixar-sql">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="carousel-btn next" data-carousel="pixar-sql">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <div class="carousel-indicators">
-                            <span class="indicator active" data-slide="0"></span>
-                            <span class="indicator" data-slide="1"></span>
-                            <span class="indicator" data-slide="2"></span>
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="SQL Analysis Dashboard" 
+                             loading="lazy">
+                        <div class="project-overlay">
+                            <i class="fas fa-database"></i>
                         </div>
                     </div>
                     <div class="project-body">
@@ -531,7 +493,7 @@
                         <div class="project-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
-                        <h3 class="project-title">Branch Services Real-time Dashboard</h3>
+                        <h3 class="project-title">Branch Services Dashboard</h3>
                         <div class="project-tech">
                             <span class="tech-tag power-bi">Power BI</span>
                             <span class="tech-tag sql">SQL Server</span>
@@ -539,11 +501,11 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                              alt="Branch Services Dashboard" 
                              loading="lazy">
                         <div class="project-overlay">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
                     </div>
                     <div class="project-body">
@@ -592,11 +554,11 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                              alt="Excel Sales Dashboard" 
                              loading="lazy">
                         <div class="project-overlay">
-                            <i class="fas fa-table"></i>
+                            <i class="fas fa-file-excel"></i>
                         </div>
                     </div>
                     <div class="project-body">
@@ -645,7 +607,7 @@
                         </div>
                     </div>
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                              alt="Looker Studio Sales Report" 
                              loading="lazy">
                         <div class="project-overlay">
@@ -747,19 +709,19 @@
             <div class="contact-social">
                 <h3>Find me on social media</h3>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/mohamed-hosam-analyst" class="social-link linkedin" target="_blank">
+                    <a href="https://www.linkedin.com/in/mohamed-hosam-analyst" class="social-link linkedin" target="_blank" aria-label="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/mohamedhosamothman" class="social-link github" target="_blank">
+                    <a href="https://github.com/mohamedhosamothman" class="social-link github" target="_blank" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.kaggle.com/mohamedhosamothman" class="social-link kaggle" target="_blank">
+                    <a href="https://www.kaggle.com/mohamedhosamothman" class="social-link kaggle" target="_blank" aria-label="Kaggle">
                         <i class="fab fa-kaggle"></i>
                     </a>
-                    <a href="mailto:mohamedhosamothman@gmail.com" class="social-link email">
+                    <a href="mailto:mohamedhosamothman@gmail.com" class="social-link email" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="tel:+201024984060" class="social-link phone">
+                    <a href="tel:+201024984060" class="social-link phone" aria-label="Phone">
                         <i class="fas fa-phone"></i>
                     </a>
                 </div>
@@ -800,6 +762,6 @@
     </button>
 
     <!-- Custom JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

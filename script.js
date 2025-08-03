@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initTypewriter();
     initScrollAnimations();
-    initCarousels();
     initBackToTop();
     initProgressBars();
-    initLazyLoading();
     initSmoothScrolling();
+    initParticles();
+    initContactForm();
+    initImageLazyLoading();
+    initSkillHover();
 });
 
 // ===== LOADER =====
@@ -21,7 +23,15 @@ function initLoader() {
     // Hide loader after content is loaded
     window.addEventListener('load', () => {
         setTimeout(() => {
-            loader.classList.add('hidden');
+            if (loader) {
+                loader.classList.add('hidden');
+                // Remove loader from DOM after animation
+                setTimeout(() => {
+                    if (loader.parentNode) {
+                        loader.parentNode.removeChild(loader);
+                    }
+                }, 300);
+            }
         }, 1000);
     });
 }
@@ -30,7 +40,9 @@ function initLoader() {
 function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
-    const icon = themeToggle.querySelector('i');
+    const icon = themeToggle?.querySelector('i');
+
+    if (!themeToggle || !icon) return;
 
     // Check for system preference or saved theme
     const savedTheme = localStorage.getItem('theme');
@@ -83,6 +95,8 @@ function initNavigation() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navLinksContainer = document.getElementById('nav-links');
 
+    if (!navbar) return;
+
     // Navbar scroll effect
     let lastScrollY = window.scrollY;
     
@@ -110,33 +124,35 @@ function initNavigation() {
     });
 
     // Mobile menu toggle
-    mobileMenuBtn.addEventListener('click', () => {
-        const isActive = navLinksContainer.classList.contains('active');
-        
-        if (isActive) {
-            navLinksContainer.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-        } else {
-            navLinksContainer.classList.add('active');
-            mobileMenuBtn.classList.add('active');
-        }
-    });
-
-    // Close mobile menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinksContainer.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
+    if (mobileMenuBtn && navLinksContainer) {
+        mobileMenuBtn.addEventListener('click', () => {
+            const isActive = navLinksContainer.classList.contains('active');
+            
+            if (isActive) {
+                navLinksContainer.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            } else {
+                navLinksContainer.classList.add('active');
+                mobileMenuBtn.classList.add('active');
+            }
         });
-    });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navbar.contains(e.target)) {
-            navLinksContainer.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-        }
-    });
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target)) {
+                navLinksContainer.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            }
+        });
+    }
 
     // Update active nav link
     function updateActiveNavLink() {
@@ -162,8 +178,10 @@ function initNavigation() {
 // ===== TYPEWRITER EFFECT =====
 function initTypewriter() {
     const typewriter = document.getElementById('typewriter');
+    if (!typewriter) return;
+
     const texts = [
-        'Data Analyst, BI Developer',
+        'Data Analyst & BI Developer',
         'SQL Expert',
         'Power BI Specialist',
         'Python Data Analyst',
@@ -222,12 +240,22 @@ function initScrollAnimations() {
                 if (entry.target.closest('#skills')) {
                     animateProgressBars();
                 }
+
+                // Animate counters when hero section is visible
+                if (entry.target.closest('#home')) {
+                    animateCounters();
+                }
             }
         });
     }, observerOptions);
 
     // Observe all elements with AOS attributes
     document.querySelectorAll('[data-aos]').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Also observe sections for counter animation
+    document.querySelectorAll('section').forEach(el => {
         observer.observe(el);
     });
 }
@@ -250,111 +278,33 @@ function animateProgressBars() {
     });
 }
 
-// ===== CAROUSEL FUNCTIONALITY =====
-function initCarousels() {
-    const carousels = document.querySelectorAll('.project-carousel');
+// ===== COUNTER ANIMATION =====
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
     
-    carousels.forEach(carousel => {
-        const images = carousel.querySelectorAll('.carousel-image');
-        const indicators = carousel.querySelectorAll('.indicator');
-        const prevBtn = carousel.querySelector('.carousel-btn.prev');
-        const nextBtn = carousel.querySelector('.carousel-btn.next');
+    counters.forEach(counter => {
+        if (counter.classList.contains('animated')) return;
         
-        if (images.length <= 1) return; // Skip if only one image
+        const target = counter.textContent.trim();
+        const isNumeric = /^\d+\+?$/.test(target);
         
-        let currentSlide = 0;
-        const totalSlides = images.length;
-        
-        // Auto-slide functionality
-        let autoSlideInterval = setInterval(() => {
-            nextSlide();
-        }, 5000);
-        
-        // Pause auto-slide on hover
-        carousel.addEventListener('mouseenter', () => {
-            clearInterval(autoSlideInterval);
-        });
-        
-        carousel.addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(() => {
-                nextSlide();
-            }, 5000);
-        });
-        
-        // Next slide function
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlide();
-        }
-        
-        // Previous slide function
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlide();
-        }
-        
-        // Update slide display
-        function updateSlide() {
-            images.forEach((img, index) => {
-                img.classList.toggle('active', index === currentSlide);
-            });
-            
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-        }
-        
-        // Button event listeners
-        if (nextBtn) {
-            nextBtn.addEventListener('click', nextSlide);
-        }
-        
-        if (prevBtn) {
-            prevBtn.addEventListener('click', prevSlide);
-        }
-        
-        // Indicator event listeners
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentSlide = index;
-                updateSlide();
-            });
-        });
-        
-        // Keyboard navigation
-        carousel.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-            }
-        });
-        
-        // Touch/swipe support for mobile
-        let startX = 0;
-        let endX = 0;
-        
-        carousel.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-        
-        carousel.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-            handleSwipe();
-        });
-        
-        function handleSwipe() {
-            const threshold = 50;
-            const diff = startX - endX;
-            
-            if (Math.abs(diff) > threshold) {
-                if (diff > 0) {
-                    nextSlide(); // Swipe left - next slide
+        if (isNumeric) {
+            const finalNumber = parseInt(target.replace('+', ''));
+            const hasPlus = target.includes('+');
+            let current = 0;
+            const increment = finalNumber / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= finalNumber) {
+                    counter.textContent = finalNumber + (hasPlus ? '+' : '');
+                    clearInterval(timer);
                 } else {
-                    prevSlide(); // Swipe right - previous slide
+                    counter.textContent = Math.ceil(current) + (hasPlus ? '+' : '');
                 }
-            }
+            }, 40);
         }
+        
+        counter.classList.add('animated');
     });
 }
 
@@ -362,6 +312,8 @@ function initCarousels() {
 function initBackToTop() {
     const backToTop = document.getElementById('back-to-top');
     
+    if (!backToTop) return;
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
             backToTop.classList.add('visible');
@@ -376,36 +328,6 @@ function initBackToTop() {
             behavior: 'smooth'
         });
     });
-}
-
-// ===== LAZY LOADING =====
-function initLazyLoading() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    
-                    // Create a new image to preload
-                    const newImg = new Image();
-                    newImg.onload = () => {
-                        img.src = newImg.src;
-                        img.classList.add('loaded');
-                    };
-                    
-                    newImg.src = img.dataset.src || img.src;
-                    imageObserver.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '50px'
-        });
-
-        // Observe all images with loading="lazy"
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
 }
 
 // ===== SMOOTH SCROLLING =====
@@ -431,8 +353,7 @@ function initSmoothScrolling() {
 }
 
 // ===== PARTICLE ANIMATION =====
-function createDataParticles() {
-    const hero = document.querySelector('.hero');
+function initParticles() {
     const particlesContainer = document.querySelector('.data-particles');
     
     if (!particlesContainer) return;
@@ -452,10 +373,17 @@ function createDataParticles() {
         particle.className = 'data-particle';
         particle.innerHTML = `<i class="${dataIcons[Math.floor(Math.random() * dataIcons.length)]}"></i>`;
         
-        // Random position
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        // Style the particle
+        particle.style.cssText = `
+            position: absolute;
+            left: ${Math.random() * 100}%;
+            top: 100%;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: ${Math.random() * 20 + 10}px;
+            pointer-events: none;
+            animation: floatUp ${Math.random() * 10 + 10}s linear infinite;
+            z-index: 1;
+        `;
         
         particlesContainer.appendChild(particle);
         
@@ -464,96 +392,302 @@ function createDataParticles() {
             if (particle.parentNode) {
                 particle.parentNode.removeChild(particle);
             }
-        }, 5000);
+        }, 20000);
+    }
+    
+    // Add CSS for float animation if not exists
+    if (!document.querySelector('#particle-styles')) {
+        const style = document.createElement('style');
+        style.id = 'particle-styles';
+        style.textContent = `
+            @keyframes floatUp {
+                0% {
+                    transform: translateY(0) translateX(0) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) translateX(${Math.random() * 200 - 100}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
     
     // Create particles periodically
-    setInterval(createParticle, 2000);
-}
-
-// Initialize particles
-setTimeout(createDataParticles, 2000);
-
-// ===== FORM HANDLING (if contact form exists) =====
-function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
+    setInterval(createParticle, 3000);
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Show loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission (replace with actual endpoint)
-            setTimeout(() => {
-                // Show success message
-                showNotification('Message sent successfully!', 'success');
-                
-                // Reset form
-                this.reset();
-                
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
+    // Create initial particles
+    for (let i = 0; i < 5; i++) {
+        setTimeout(createParticle, i * 600);
     }
 }
 
-// ===== NOTIFICATIONS =====
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
+// ===== CONTACT FORM =====
+function initContactForm() {
+    // Add hover effects to contact cards
+    const contactCards = document.querySelectorAll('.contact-card');
     
-    // Style the notification
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 1.5rem;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        z-index: 10000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    `;
+    contactCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(-5px) scale(1)';
+        });
+    });
+
+    // Add click effects to contact buttons
+    const contactBtns = document.querySelectorAll('.contact-btn');
     
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Remove after 5 seconds
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
+    contactBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = btn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            btn.style.position = 'relative';
+            btn.style.overflow = 'hidden';
+            btn.appendChild(ripple);
+            
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 600);
+        });
+    });
+
+    // Add ripple animation if not exists
+    if (!document.querySelector('#ripple-styles')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-styles';
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
             }
-        }, 300);
-    }, 5000);
+        `;
+        document.head.appendChild(style);
+    }
 }
 
-// ===== PERFORMANCE OPTIMIZATIONS =====
-function optimizePerformance() {
+// ===== LAZY LOADING =====
+function initImageLazyLoading() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('fade-in');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
+    }
+
+    // Add fade-in styles if not exists
+    if (!document.querySelector('#fade-styles')) {
+        const style = document.createElement('style');
+        style.id = 'fade-styles';
+        style.textContent = `
+            img {
+                transition: opacity 0.3s ease;
+            }
+            img.fade-in {
+                opacity: 1;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// ===== SKILL HOVER EFFECTS =====
+function initSkillHover() {
+    const skillCategories = document.querySelectorAll('.skill-category');
+    
+    skillCategories.forEach(category => {
+        const icon = category.querySelector('.skill-icon');
+        const tags = category.querySelectorAll('.skill-tag');
+        
+        category.addEventListener('mouseenter', () => {
+            // Animate icon
+            if (icon) {
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+            }
+            
+            // Animate tags
+            tags.forEach((tag, index) => {
+                setTimeout(() => {
+                    tag.style.transform = 'translateY(-3px)';
+                }, index * 50);
+            });
+        });
+        
+        category.addEventListener('mouseleave', () => {
+            // Reset icon
+            if (icon) {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            }
+            
+            // Reset tags
+            tags.forEach(tag => {
+                tag.style.transform = 'translateY(0)';
+            });
+        });
+    });
+}
+
+// ===== PROJECT CARD EFFECTS =====
+function initProjectEffects() {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        const header = card.querySelector('.project-header');
+        const links = card.querySelectorAll('.project-link');
+        
+        card.addEventListener('mouseenter', () => {
+            // Add glow effect
+            card.style.boxShadow = '0 20px 40px rgba(102, 126, 234, 0.2)';
+            card.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.boxShadow = '';
+            card.style.transform = '';
+        });
+        
+        // Add click effect to project links
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Add loading state
+                const originalText = link.innerHTML;
+                link.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                link.style.pointerEvents = 'none';
+                
+                setTimeout(() => {
+                    link.innerHTML = originalText;
+                    link.style.pointerEvents = 'auto';
+                    
+                    // Open link
+                    if (link.getAttribute('href') !== '#') {
+                        window.open(link.getAttribute('href'), '_blank');
+                    }
+                }, 1000);
+            });
+        });
+    });
+}
+
+// ===== CERTIFICATE MODAL =====
+function initCertificateModal() {
+    const certificateImages = document.querySelectorAll('.certificate-image img');
+    
+    certificateImages.forEach(img => {
+        img.addEventListener('click', () => {
+            showImageModal(img.src, img.alt);
+        });
+        
+        img.style.cursor = 'pointer';
+        img.title = 'Click to view full size';
+    });
+}
+
+function showImageModal(src, alt) {
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    modal.innerHTML = `
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img src="${src}" alt="${alt}">
+        </div>
+    `;
+    
+    // Add modal styles
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    
+    // Close modal events
+    const closeBtn = modal.querySelector('.modal-close');
+    const backdrop = modal.querySelector('.modal-backdrop');
+    
+    const closeModal = () => {
+        modal.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => {
+            if (modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+            document.body.style.overflow = '';
+        }, 300);
+    };
+    
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    
+    // Close on escape key
+    const handleKeydown = (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+            document.removeEventListener('keydown', handleKeydown);
+        }
+    };
+    
+    document.addEventListener('keydown', handleKeydown);
+}
+
+// ===== PERFORMANCE OPTIMIZATION =====
+function initPerformanceOptimizations() {
     // Debounce scroll events
     let scrollTimeout;
     const originalScrollHandler = window.onscroll;
     
-    window.addEventListener('scroll', () => {
+    window.onscroll = () => {
         if (scrollTimeout) {
             clearTimeout(scrollTimeout);
         }
@@ -563,247 +697,185 @@ function optimizePerformance() {
                 originalScrollHandler();
             }
         }, 10);
-    });
+    };
     
-    // Optimize image loading
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('error', function() {
-            // Fallback for broken images
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4=';
-        });
-    });
+    // Optimize animations for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.style.setProperty('--transition', 'none');
+        document.documentElement.style.setProperty('--transition-fast', 'none');
+    }
 }
 
 // ===== ERROR HANDLING =====
 window.addEventListener('error', (e) => {
     console.error('JavaScript error:', e.error);
     
-    // Log error for debugging (in production, send to error tracking service)
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'exception', {
-            description: e.error.toString(),
-            fatal: false
-        });
+    // Hide loader if error occurs during loading
+    const loader = document.getElementById('loader');
+    if (loader && !loader.classList.contains('hidden')) {
+        loader.classList.add('hidden');
     }
 });
 
-// ===== KEYBOARD NAVIGATION =====
-function initKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-        // ESC key functionality
-        if (e.key === 'Escape') {
-            // Close mobile menu
-            const navLinks = document.getElementById('nav-links');
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-            }
-        }
-        
-        // Arrow key navigation for carousels
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-            const focusedCarousel = document.querySelector('.project-carousel:focus-within');
-            if (focusedCarousel) {
-                const event = new KeyboardEvent('keydown', { key: e.key });
-                focusedCarousel.dispatchEvent(event);
-            }
-        }
-    });
-    
-    // Add tab navigation support
-    const focusableElements = document.querySelectorAll(
-        'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
-    );
-    
-    focusableElements.forEach(element => {
-        element.addEventListener('focus', () => {
-            element.classList.add('keyboard-focus');
-        });
-        
-        element.addEventListener('blur', () => {
-            element.classList.remove('keyboard-focus');
-        });
-    });
-}
-
-// ===== ANALYTICS TRACKING =====
-function trackUserInteractions() {
-    // Track button clicks
-    document.querySelectorAll('.btn, .project-link, .certificate-link').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const buttonText = e.target.textContent.trim();
-            const buttonType = e.target.className;
-            
-            // Track with Google Analytics if available
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'click', {
-                    event_category: 'Button',
-                    event_label: buttonText,
-                    custom_parameter: buttonType
-                });
-            }
-        });
-    });
-    
-    // Track section views
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                const sectionId = entry.target.id;
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_view', {
-                        page_title: sectionId,
-                        page_location: window.location.href + '#' + sectionId
-                    });
-                }
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    document.querySelectorAll('section[id]').forEach(section => {
-        sectionObserver.observe(section);
-    });
-}
-
-// ===== ACCESSIBILITY ENHANCEMENTS =====
-function enhanceAccessibility() {
-    // Add skip link
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.className = 'skip-link';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 6px;
-        background: var(--primary);
-        color: white;
-        padding: 8px;
-        text-decoration: none;
-        border-radius: 4px;
-        z-index: 10000;
-        transition: top 0.3s;
-    `;
-    
-    skipLink.addEventListener('focus', () => {
-        skipLink.style.top = '6px';
-    });
-    
-    skipLink.addEventListener('blur', () => {
-        skipLink.style.top = '-40px';
-    });
-    
-    document.body.insertBefore(skipLink, document.body.firstChild);
-    
-    // Add main content ID
-    const heroSection = document.getElementById('home');
-    if (heroSection) {
-        heroSection.id = 'main-content';
-        heroSection.setAttribute('tabindex', '-1');
-    }
-    
-    // Improve button accessibility
-    document.querySelectorAll('button:not([aria-label])').forEach(button => {
-        if (!button.textContent.trim()) {
-            const icon = button.querySelector('i');
-            if (icon) {
-                const iconClass = icon.className;
-                let label = 'Button';
-                
-                if (iconClass.includes('fa-moon') || iconClass.includes('fa-sun')) {
-                    label = 'Toggle theme';
-                } else if (iconClass.includes('fa-chevron-up')) {
-                    label = 'Back to top';
-                } else if (iconClass.includes('fa-bars')) {
-                    label = 'Toggle menu';
-                }
-                
-                button.setAttribute('aria-label', label);
-            }
-        }
-    });
-}
-
-// ===== INITIALIZE ALL FUNCTIONALITY =====
-function initializeAdvancedFeatures() {
-    optimizePerformance();
-    initKeyboardNavigation();
-    initContactForm();
-    trackUserInteractions();
-    enhanceAccessibility();
-}
-
-// Initialize advanced features after main initialization
-setTimeout(initializeAdvancedFeatures, 1000);
-
-// ===== PAGE VISIBILITY API =====
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        // Pause animations when tab is not visible
-        document.querySelectorAll('.carousel').forEach(carousel => {
-            carousel.style.animationPlayState = 'paused';
-        });
-    } else {
-        // Resume animations when tab becomes visible
-        document.querySelectorAll('.carousel').forEach(carousel => {
-            carousel.style.animationPlayState = 'running';
-        });
-    }
-});
-
-// ===== LOADING PERFORMANCE MONITORING =====
-window.addEventListener('load', () => {
-    // Monitor loading performance
-    if ('performance' in window) {
-        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-        console.log(`Page loaded in ${(loadTime / 1000).toFixed(2)} seconds`);
-        
-        // Track performance with analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'timing_complete', {
-                name: 'load',
-                value: loadTime
-            });
-        }
-    }
-    
-    // Initialize any features that need full page load
+// ===== INITIALIZE ADDITIONAL FEATURES =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize additional features after a short delay
     setTimeout(() => {
-        document.body.classList.add('loaded');
+        initProjectEffects();
+        initCertificateModal();
+        initPerformanceOptimizations();
     }, 500);
 });
 
-// ===== RESIZE HANDLER =====
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        // Recalculate any position-dependent elements
-        const carousels = document.querySelectorAll('.project-carousel');
-        carousels.forEach(carousel => {
-            // Reset carousel positions if needed
-            const activeImage = carousel.querySelector('.carousel-image.active');
-            if (activeImage) {
-                activeImage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        });
-    }, 250);
-});
-
-// ===== EXPORT FOR TESTING =====
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        initLoader,
-        initTheme,
-        initNavigation,
-        initTypewriter,
-        initScrollAnimations,
-        initCarousels,
-        initBackToTop,
-        showNotification
+// ===== UTILITY FUNCTIONS =====
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
     };
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// ===== SOCIAL SHARE FUNCTIONALITY =====
+function shareProfile() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Mohamed Hosam Othman - Data Analyst & BI Developer',
+            text: 'Check out this amazing data analyst portfolio!',
+            url: window.location.href
+        });
+    } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            showNotification('Portfolio link copied to clipboard!');
+        });
+    }
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--primary);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Add notification animations
+if (!document.querySelector('#notification-styles')) {
+    const style = document.createElement('style');
+    style.id = 'notification-styles';
+    style.textContent = `
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .image-modal .modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .image-modal .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .image-modal .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+        
+        .image-modal img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    `;
+    document.head.appendChild(style);
 }

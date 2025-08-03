@@ -930,94 +930,14 @@ body {
 .tech-tag.dax { background: rgba(153, 102, 255, 0.8); }
 .tech-tag.analytics { background: rgba(255, 159, 64, 0.8); }
 .tech-tag.looker { background: rgba(255, 99, 132, 0.8); }
+.tech-tag.powerquery { background: rgba(46, 204, 113, 0.8); }
+.tech-tag.pivot { background: rgba(231, 76, 60, 0.8); }
+.tech-tag.bi { background: rgba(142, 68, 173, 0.8); }
+.tech-tag.realtime { background: rgba(52, 152, 219, 0.8); }
+.tech-tag.visualization { background: rgba(230, 126, 34, 0.8); }
+.tech-tag.interactive { background: rgba(241, 196, 15, 0.8); }
 
-/* ===== PROJECT CAROUSEL ===== */
-.project-carousel {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-}
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.carousel-image.active {
-    opacity: 1;
-}
-
-.carousel-controls {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1rem;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.project-carousel:hover .carousel-controls {
-    opacity: 1;
-}
-
-.carousel-btn {
-    width: 40px;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.7);
-    border: none;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
-
-.carousel-btn:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: scale(1.1);
-}
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-}
-
-.indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.indicator.active {
-    background: white;
-    transform: scale(1.2);
-}
-
-/* ===== PROJECT IMAGE (for single images) ===== */
+/* ===== PROJECT IMAGE ===== */
 .project-image {
     position: relative;
     height: 250px;
@@ -1544,13 +1464,18 @@ body {
         margin: 0 0.5rem;
     }
 
-    .carousel-btn {
-        width: 35px;
-        height: 35px;
-    }
-
     .stat-item {
         min-width: 80px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 }
 
