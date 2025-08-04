@@ -88,6 +88,8 @@
             --gradient-card: linear-gradient(145deg, #1e293b 0%, #334155 100%);
             --gradient-glass: linear-gradient(145deg, rgba(30,41,59,0.8) 0%, rgba(51,65,85,0.6) 100%);
             --shadow-glow: 0 0 30px rgba(129, 140, 248, 0.3);
+                  --footer-bg: #000000;
+               --footer-text: #ffffff;
         }
 
         /* ===== BASE STYLES ===== */
@@ -1136,29 +1138,29 @@
             box-shadow: var(--shadow-glow);
         }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact {
-            background: var(--gradient-hero);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
+       /* ===== CONTACT SECTION ===== */
+.contact {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
 
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDYwIDAgTCAwIDAgMCA2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==');
-            opacity: 0.1;
-        }
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(99, 102, 241, 0.02) 50%, transparent 100%);
+    pointer-events: none;
+}
 
-        .contact .section-title,
-        .contact .section-subtitle {
-            color: white;
-        }
+.contact .section-title,
+.contact .section-subtitle {
+    color: var(--text-primary);
+}
 
         .contact-grid {
             display: grid;
@@ -1303,85 +1305,87 @@
         .social-link.phone:hover { background: #25d366; border-color: #25d366; }
 
         /* ===== FOOTER ===== */
-        .footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 4rem 0 2rem;
-            position: relative;
-        }
+.footer {
+    background: #000000 !important; /* أسود دائماً */
+    color: #ffffff !important; /* أبيض دائماً */
+    padding: 4rem 0 2rem;
+    position: relative;
+}
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--gradient-primary);
-        }
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-primary);
+}
 
-        .footer-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+.footer-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: #ffffff !important; /* أبيض دائماً */
+}
 
-        .footer-logo i {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.footer-logo i {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-        .footer-description {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
+.footer-description {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    color: #ffffff !important; /* أبيض دائماً */
+}
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            font-size: 1.1rem;
-        }
+.footer-links a {
+    color: #e2e8f0 !important; /* أبيض فاتح دائماً */
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    font-size: 1.1rem;
+}
 
-        .footer-links a:hover {
-            color: var(--primary-light);
-            transform: translateY(-2px);
-        }
+.footer-links a:hover {
+    color: var(--primary-light) !important;
+    transform: translateY(-2px);
+}
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 2rem;
-            opacity: 0.7;
-        }
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 2rem;
+    opacity: 0.7;
+}
 
-        .footer-bottom p {
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
+.footer-bottom p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #ffffff !important; /* أبيض دائماً */
+}
         /* ===== BACK TO TOP ===== */
         .back-to-top {
             position: fixed;
@@ -2368,7 +2372,7 @@
     </section>
 
 <!-- Contact Section -->
-<section class="section section-alt" id="contact">
+<section class="section" id="contact">
   <div class="container">
     <h2 class="section-title fade-in-up">
       <i class="fas fa-envelope-open-text"></i>
@@ -2458,58 +2462,221 @@
     }
   }
 
-  .contact-grid {
+/* ===== IMPROVED CONTACT CARDS ===== */
+.contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
-  .contact-card {
-    background-color: var(--card-bg);
-    padding: 1.2rem;
-    border-radius: 1.2rem;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    text-decoration: none;
-  }
-
-  .contact-card:hover {
-    transform: translateY(-5px);
-    background-color: var(--card-hover);
-  }
-
-  .contact-header {
+.contact-card {
+    background: var(--bg-card);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--text-color);
-  }
+    text-decoration: none;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(0);
+}
 
-  .contact-icon i {
+/* تدرج خفيف في الخلفية */
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(99, 102, 241, 0.02) 0%, 
+        rgba(139, 92, 246, 0.02) 50%, 
+        rgba(236, 72, 153, 0.02) 100%
+    );
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.contact-card:hover::before {
+    opacity: 1;
+}
+
+/* تأثير الهوفر */
+.contact-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        var(--shadow-2xl),
+        0 0 40px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.2);
+}
+
+/* الأيقونة */
+.contact-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
     font-size: 2rem;
-    color: var(--icon-color);
-    margin-bottom: 0.5rem;
-  }
+    color: white;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 2;
+}
 
-  .contact-title {
-    margin: 0;
-    font-size: 1.2rem;
-  }
+/* تأثير الأيقونة عند الهوفر */
+.contact-card:hover .contact-icon {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 
+        var(--shadow-xl),
+        0 0 30px rgba(99, 102, 241, 0.4);
+}
 
-  .contact-body {
+/* العناوين */
+.contact-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.contact-card:hover .contact-title {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* النص الوصفي */
+.contact-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
     text-align: center;
-    margin-top: 0.5rem;
-    color: var(--text-color);
-  }
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+    line-height: 1.5;
+}
 
-  .contact-description {
-    font-size: 0.95rem;
-    word-break: break-word;
-  }
+.contact-card:hover .contact-description {
+    color: var(--text-primary);
+}
+
+/* ألوان مخصصة لكل كارد */
+.contact-card:nth-child(1) {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.contact-card:nth-child(1):hover {
+    border-color: #ea4335;
+    box-shadow: 
+        var(--shadow-2xl),
+        0 0 40px rgba(234, 67, 53, 0.15);
+}
+
+.contact-card:nth-child(1) .contact-icon {
+    background: linear-gradient(135deg, #ea4335 0%, #d33b2c 100%);
+}
+
+.contact-card:nth-child(2) {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.contact-card:nth-child(2):hover {
+    border-color: #0077b5;
+    box-shadow: 
+        var(--shadow-2xl),
+        0 0 40px rgba(0, 119, 181, 0.15);
+}
+
+.contact-card:nth-child(2) .contact-icon {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+}
+
+.contact-card:nth-child(3) {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.contact-card:nth-child(3):hover {
+    border-color: #25d366;
+    box-shadow: 
+        var(--shadow-2xl),
+        0 0 40px rgba(37, 211, 102, 0.15);
+}
+
+.contact-card:nth-child(3) .contact-icon {
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.contact-card:nth-child(4) {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.contact-card:nth-child(4):hover {
+    border-color: #333333;
+    box-shadow: 
+        var(--shadow-2xl),
+        0 0 40px rgba(51, 51, 51, 0.15);
+}
+
+.contact-card:nth-child(4) .contact-icon {
+    background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+}
+
+/* للثيم الداكن */
+[data-theme="dark"] .contact-card {
+    background: var(--bg-card);
+    border-color: rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="dark"] .contact-card:nth-child(1),
+[data-theme="dark"] .contact-card:nth-child(2),
+[data-theme="dark"] .contact-card:nth-child(3),
+[data-theme="dark"] .contact-card:nth-child(4) {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+/* تحسينات للموبايل */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .contact-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contact-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .contact-title {
+        font-size: 1.3rem;
+    }
+    
+    .contact-description {
+        font-size: 0.95rem;
+    }
+}
 </style>
 
     
